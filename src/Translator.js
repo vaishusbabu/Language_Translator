@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import languageList from './language.json';
 import axios from 'axios';
+import { SwapOutlined } from '@ant-design/icons';
 
 export default function Translator() {
     const [inputFormat, setInputFormat] = useState('en');
@@ -68,14 +69,8 @@ export default function Translator() {
                         );
                     })}
                 </select>
-                <svg className='reversesvg'
-                    onClick={handleReverseLanguage}
-                    focusable="false"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
-                    <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z">
-                    </path>
-                </svg>
+                <SwapOutlined onClick={handleReverseLanguage} />
+
                 <select value={outputFormat} onChange={(e) => {
                     setOutputFormat(e.target.value);
                     setTranslatedText('Translation');
@@ -90,6 +85,7 @@ export default function Translator() {
             </div>
             <div className="row2">
                 <div className="inputText">
+
                     <svg className='removeinput'
                         style={{ display: (inputText.length) ? "block" : "none" }}
                         onClick={handleRemoveInputText}
